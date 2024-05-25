@@ -15,41 +15,50 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-
 @Service
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
 
-    @Override
+    // Method to add a new book
     public BasicResponse addBook(BookDTO bookDTO) {
+        // Check if a book with the same title already exists
         if (bookRepository.existsByTitle(bookDTO.getTitle())) {
             throw new BadRequestException("Book with title already exists");
         }
+
+        // Convert BookDTO to Books entity and save it to the database
         Books book = convertToEntity(bookDTO);
         bookRepository.save(book);
-        return new BasicResponse("Book added successfully");
 
+        // Return a success response
+        return new BasicResponse("Book added successfully");
     }
 
-    @Override
+    // Method to retrieve a book by its UUID
     public Books getBookByUuid(UUID bookId) {
-         return bookRepository.findFirstByUuid(bookId)
+        // Find and return the book by its UUID, or throw a NotFoundException if not found
+        return bookRepository.findFirstByUuid(bookId)
                 .orElseThrow(() -> new NotFoundException("Book not found"));
     }
 
+    // Method to retrieve all available books
     @Override
     public List<Books> getAllAvailableBooks() {
-           return bookRepository.findByStatus(BookStatus.AVAILABLE);
-
+        // Retrieve and return all books with status AVAILABLE
+        return bookRepository.findByStatus(BookStatus.AVAILABLE);
     }
 
+    // Method to update an existing book
     @Override
     @Transactional
     public BasicResponse updateBook(UUID bookId, BookDTO bookDTO) {
+        // Find the book by its UUID
         Books book = bookRepository.findFirstByUuid(bookId)
                 .orElseThrow(() -> new NotFoundException("Book not found"));
+
+        // Update the book details with the information from the BookDTO
         book.setTitle(bookDTO.getTitle());
         book.setAuthor(bookDTO.getAuthor());
         book.setDescription(bookDTO.getDescription());
@@ -57,21 +66,26 @@ public class BookServiceImpl implements BookService {
         book.setQuantity(bookDTO.getQuantity());
         book.setCategory(bookDTO.getCategory());
         book.setAvailable(bookDTO.isAvailable());
-          return new BasicResponse("Book updated successfully");
 
-
+        // Return a success response
+        return new BasicResponse("Book updated successfully");
     }
 
+    // Method to delete a book by its UUID
     @Override
     public BasicResponse deleteBook(UUID bookId) {
-       Books book = bookRepository.findFirstByUuid(bookId)
+        // Find the book by its UUID
+        Books book = bookRepository.findFirstByUuid(bookId)
                 .orElseThrow(() -> new NotFoundException("Book not found"));
-        bookRepository.delete(book);
-        return new BasicResponse("Book deleted successfully");
 
+        // Delete the book from the database
+        bookRepository.delete(book);
+
+        // Return a success response
+        return new BasicResponse("Book deleted successfully");
     }
 
-
+    // Helper method to convert BookDTO to Books entity
     private Books convertToEntity(BookDTO bookDTO) {
         Books book = new Books();
         book.setTitle(bookDTO.getTitle());
