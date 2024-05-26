@@ -5,7 +5,7 @@ import com.susancode.onlinebookstore.dto.response.ApiResponse;
 import com.susancode.onlinebookstore.enums.BookStatus;
 import com.susancode.onlinebookstore.exception.BadRequestException;
 import com.susancode.onlinebookstore.exception.NotFoundException;
-import com.susancode.onlinebookstore.model.Books;
+import com.susancode.onlinebookstore.model.Book;
 import com.susancode.onlinebookstore.repository.BookRepository;
 import com.susancode.onlinebookstore.service.Impl.BookServiceImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -50,12 +50,11 @@ public class BookServiceTest {
         bookDTO.setQuantity(10);
         bookDTO.setCategory("Test Category");
         bookDTO.setAvailable(true);
-        bookDTO.getStatus();
 
         when(bookRepository.existsByTitle("Test Book")).thenReturn(false);
         when(bookRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
-        ApiResponse<Books> response = bookService.addBook(bookDTO);
+        ApiResponse<Book> response = bookService.addBook(bookDTO);
 
         assertNotNull(response);
         assertTrue(response.isRequestSuccessful());
@@ -81,11 +80,11 @@ public class BookServiceTest {
     @DisplayName("Get book by UUID")
     void getBookByUuid() {
         UUID bookId = UUID.randomUUID();
-        Books book = new Books();
+        Book book = new Book();
         book.setUuid(bookId);
 
         when(bookRepository.findFirstByUuid(bookId)).thenReturn(Optional.of(book));
-        Books result = bookService.getBookByUuid(bookId);
+        Book result = bookService.getBookByUuid(bookId);
         assertNotNull(result);
         assertEquals(bookId, result.getUuid());
         verify(bookRepository, times(1)).findFirstByUuid(bookId);
@@ -94,10 +93,10 @@ public class BookServiceTest {
     @Test
     @DisplayName("Get all available books")
     void getAllAvailableBooks() {
-        Books book = new Books();
-        List<Books> books = Collections.singletonList(book);
+        Book book = new Book();
+        List<Book> books = Collections.singletonList(book);
         when(bookRepository.findByStatus(any())).thenReturn(books);
-        List<Books> result = bookService.getAllAvailableBooks();
+        List<Book> result = bookService.getAllAvailableBooks();
         assertNotNull(result);
         assertFalse(result.isEmpty());
         verify(bookRepository, times(1)).findByStatus(any());
@@ -117,7 +116,7 @@ public class BookServiceTest {
             updatedBookDTO.setCategory("Updated Category");
             updatedBookDTO.setAvailable(true);
 
-            Books existingBook = new Books();
+            Book existingBook = new Book();
             existingBook.setUuid(bookId);
             existingBook.setTitle("Old Book Title");
             existingBook.setAuthor("Old Author");
@@ -130,12 +129,12 @@ public class BookServiceTest {
             when(bookRepository.findFirstByUuid(bookId)).thenReturn(Optional.of(existingBook));
             when(bookRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
-            ApiResponse<Books> response = bookService.updateBook(bookId, updatedBookDTO);
+            ApiResponse<Book> response = bookService.updateBook(bookId, updatedBookDTO);
             assertNotNull(response);
             assertTrue(response.isRequestSuccessful());
             assertEquals("Book updated successfully", response.getResponseMessage());
             verify(bookRepository, times(1)).findFirstByUuid(bookId);
-            verify(bookRepository, times(1)).save(any(Books.class));
+            verify(bookRepository, times(1)).save(any(Book.class));
 
             assertEquals("Updated Book Title", existingBook.getTitle());
             assertEquals("Updated Author", existingBook.getAuthor());
@@ -167,8 +166,8 @@ public class BookServiceTest {
     void deleteBookSuccessfully() {
         UUID bookId = UUID.randomUUID();
 
-        when(bookRepository.findFirstByUuid(bookId)).thenReturn(Optional.of(new Books()));
-        ApiResponse<Books> response = bookService.deleteBook(bookId);
+        when(bookRepository.findFirstByUuid(bookId)).thenReturn(Optional.of(new Book()));
+        ApiResponse<Book> response = bookService.deleteBook(bookId);
         assertNotNull(response);
         assertTrue(response.isRequestSuccessful());
         assertEquals("Book deleted successfully", response.getResponseMessage());
