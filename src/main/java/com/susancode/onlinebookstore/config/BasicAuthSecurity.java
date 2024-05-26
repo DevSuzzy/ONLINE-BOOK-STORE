@@ -1,5 +1,6 @@
 package com.susancode.onlinebookstore.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,13 +16,11 @@ import static com.susancode.onlinebookstore.config.PasswordEncoderConfig.passwor
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class BasicAuthSecurity {
     private final RestAuthenticationEntryPoint authenticationEntryPoint;
 
-    @Autowired
-    public BasicAuthSecurity(RestAuthenticationEntryPoint authenticationEntryPoint) {
-        this.authenticationEntryPoint = authenticationEntryPoint;
-    }
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
