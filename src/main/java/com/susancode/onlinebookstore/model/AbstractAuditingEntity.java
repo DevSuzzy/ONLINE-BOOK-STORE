@@ -23,7 +23,7 @@ public abstract class AbstractAuditingEntity<T> implements Serializable {
     @JsonIgnore
     @CreatedBy
     @Column(name = "created_by", nullable = false, length = 50, updatable = false)
-    private String createdBy;
+    private String createdBy ="Susan";
 
     @CreatedDate
     @Column(name = "created_date", updatable = false)
@@ -32,7 +32,7 @@ public abstract class AbstractAuditingEntity<T> implements Serializable {
     @JsonIgnore
     @LastModifiedBy
     @Column(name = "updated_by", length = 50)
-    private String updatedBy;
+    private String updatedBy = "Susan";
 
     @JsonIgnore
     @LastModifiedDate

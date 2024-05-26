@@ -1,68 +1,54 @@
 package com.susancode.onlinebookstore.config;
 
 import com.susancode.onlinebookstore.exception.UnAuthorized;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.UnsupportedJwtException;
-import jakarta.servlet.*;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Collections;
+
 @Slf4j
-public class CustomFilter extends GenericFilterBean {
+@Component
+@RequiredArgsConstructor
+public class CustomFilter extends OncePerRequestFilter {
+    private final TokenProvider tokenProvider;
+
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws  ServletException, IOException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        String authorizationHeader =request.getHeader("Authorization");
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        String authorizationHeader = request.getHeader("Authorization");
+
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-            throw new UnAuthorized("Missing or invalid Authorization header");
+            filterChain.doFilter(request, response);
+            return;
         }
+
         String token = authorizationHeader.substring(7);
-        System.out.println("Token: "+token);
-
-
-
-        //get password from token
-        //validate password
-        //if password is valid then allow the request to proceed
-        //if password is invalid then throw UnAuthorized exception
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken("username", "password");
-        //set authentication in security context
-
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-
-
-
-        filterChain.doFilter(servletRequest,servletResponse);
-
-    }
-    public boolean validateToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(key).parseClaimsJws(authToken);
-            return true;
-        } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
-            log.info("Invalid JWT signature.");
-            log.trace("Invalid JWT signature trace: {}", e);
-        } catch (ExpiredJwtException e) {
-            log.info("Expired JWT token.");
-            log.trace("Expired JWT token trace: {}", e);
-        } catch (UnsupportedJwtException e) {
-            log.info("Unsupported JWT token.");
-            log.trace("Unsupported JWT token trace: {}", e);
-        } catch (IllegalArgumentException e) {
-            log.info("JWT token compact of handler are invalid.");
-            log.trace("JWT token compact of handler are invalid trace: {}", e);
+            if (tokenProvider.validToken(token)) {
+                String username = tokenProvider.getUsernameFromToken(token);
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                        new User(username, "", Collections.emptyList()), null, Collections.emptyList());
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+        } catch (UnAuthorized ex) {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
+            return;
         }
-        return false;
+
+        filterChain.doFilter(request, response);
     }
 
 }
-
-
-
-
-
