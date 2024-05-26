@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static com.susancode.onlinebookstore.config.PasswordEncoderConfig.passwordEncoder;
 
@@ -35,10 +36,12 @@ public class BasicAuthSecurity {
                         .requestMatchers(HttpMethod.DELETE,"/api/vi/books/**").hasRole("ADMIN")
                         .requestMatchers("/secureAPI").hasRole("ADMIN")
                         .anyRequest()
-                        .authenticated());
+                        .authenticated())
+                .addFilterBefore(new CustomFilter(), UsernamePasswordAuthenticationFilter.class);
+
                       return http.build();
     }
-
+     @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
