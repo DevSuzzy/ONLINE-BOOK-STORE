@@ -1,10 +1,12 @@
 package com.susancode.onlinebookstore.dto.request;
 
+import com.susancode.onlinebookstore.enums.BookStatus;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Setter
 @Getter
@@ -22,4 +24,8 @@ public class BookDTO {
     private int quantity;
     private String category;
     private boolean available;
-}
+    private BookStatus status;
+
+
+    }
+

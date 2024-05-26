@@ -27,7 +27,6 @@ public class Books extends AbstractAuditingEntity<Books> {
     private int quantity;
     private String category;
     private boolean available = true;
-    @Enumerated(EnumType.STRING)
     private BookStatus status = BookStatus.AVAILABLE;
 
 

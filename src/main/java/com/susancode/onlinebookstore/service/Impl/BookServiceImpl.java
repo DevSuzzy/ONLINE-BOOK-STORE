@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
         Books book = convertToEntity(bookDTO);
         bookRepository.save(book);
 
-        return new ApiResponse(true,"Book added successfully", book);
+        return new ApiResponse<>(true,"Book added successfully", book);
     }
 
     public Books getBookByUuid(UUID bookId) {
@@ -44,8 +44,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Transactional
-    public ApiResponse updateBook(UUID bookId, BookDTO bookDTO) {
+    public ApiResponse<Books>updateBook(UUID bookId, BookDTO bookDTO) {
         Books book = bookRepository.findFirstByUuid(bookId)
                 .orElseThrow(() -> new NotFoundException("Book not found"));
 
@@ -56,8 +55,9 @@ public class BookServiceImpl implements BookService {
         book.setQuantity(bookDTO.getQuantity());
         book.setCategory(bookDTO.getCategory());
         book.setAvailable(bookDTO.isAvailable());
+        Books updatedBook = bookRepository.save(book);
 
-        return new ApiResponse(true, "Book updated successfully, bookId: " + book.getUuid());
+        return new ApiResponse<>(true, "Book updated successfully", updatedBook);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class BookServiceImpl implements BookService {
 
         bookRepository.delete(book);
 
-        return new BasicResponse("Book deleted successfully");
+        return new ApiResponse(true, "Book deleted successfully");
     }
 
     private Books convertToEntity(BookDTO bookDTO) {
@@ -80,7 +80,7 @@ public class BookServiceImpl implements BookService {
         book.setCategory(bookDTO.getCategory());
         book.setAvailable(bookDTO.isAvailable());
         book.setUuid(UUID.randomUUID());
-        return bookRepository.save(book);
+        return book;
     }
 
 }
