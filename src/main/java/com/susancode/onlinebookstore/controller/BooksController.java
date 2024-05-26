@@ -2,8 +2,7 @@ package com.susancode.onlinebookstore.controller;
 
 import com.susancode.onlinebookstore.dto.request.BookDTO;
 import com.susancode.onlinebookstore.dto.response.ApiResponse;
-import com.susancode.onlinebookstore.dto.response.BasicResponse;
-import com.susancode.onlinebookstore.model.Books;
+import com.susancode.onlinebookstore.model.Book;
 import com.susancode.onlinebookstore.service.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,11 +25,11 @@ public class BooksController {
     }
 
     @GetMapping("/{uuid}")
-    public Books getBookByUuid(@PathVariable("uuid") UUID bookId) {
+    public Book getBookByUuid(@PathVariable("uuid") UUID bookId) {
         return bookService.getBookByUuid(bookId);
     }
     @GetMapping
-    public List<Books> getAllAvailableBooks() {
+    public List<Book> getAllAvailableBooks() {
         return bookService.getAllAvailableBooks();
 
     }

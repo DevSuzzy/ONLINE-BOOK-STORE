@@ -1,7 +1,7 @@
 package com.susancode.onlinebookstore.repository;
 
 import com.susancode.onlinebookstore.enums.BookStatus;
-import com.susancode.onlinebookstore.model.Books;
+import com.susancode.onlinebookstore.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,12 +11,12 @@ import java.util.UUID;
 
 
 @Repository
-public interface BookRepository extends JpaRepository<Books, Long> {
+public interface BookRepository extends JpaRepository<Book, Long> {
 
 
     boolean existsByTitle(String title);
 
-    List<Books> findByStatus(BookStatus bookStatus);
+    List<Book> findByStatus(BookStatus bookStatus);
 
-    Optional<Books> findFirstByUuid(UUID bookId);
+    Optional<Book> findFirstByUuid(UUID bookId);
 }

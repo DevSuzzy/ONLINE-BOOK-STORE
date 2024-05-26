@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "books")
-public class Books extends AbstractAuditingEntity<Books> {
+public class Book extends AbstractAuditingEntity<Book> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

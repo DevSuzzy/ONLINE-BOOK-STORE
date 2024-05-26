@@ -2,14 +2,12 @@ package com.susancode.onlinebookstore.service.Impl;
 
 import com.susancode.onlinebookstore.dto.request.BookDTO;
 import com.susancode.onlinebookstore.dto.response.ApiResponse;
-import com.susancode.onlinebookstore.dto.response.BasicResponse;
 import com.susancode.onlinebookstore.enums.BookStatus;
 import com.susancode.onlinebookstore.exception.BadRequestException;
 import com.susancode.onlinebookstore.exception.NotFoundException;
-import com.susancode.onlinebookstore.model.Books;
+import com.susancode.onlinebookstore.model.Book;
 import com.susancode.onlinebookstore.repository.BookRepository;
 import com.susancode.onlinebookstore.service.BookService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,25 +25,25 @@ public class BookServiceImpl implements BookService {
             throw new BadRequestException("Book with title already exists");
         }
 
-        Books book = convertToEntity(bookDTO);
+        Book book = convertToEntity(bookDTO);
         bookRepository.save(book);
 
         return new ApiResponse<>(true,"Book added successfully", book);
     }
 
-    public Books getBookByUuid(UUID bookId) {
+    public Book getBookByUuid(UUID bookId) {
         return bookRepository.findFirstByUuid(bookId)
                 .orElseThrow(() -> new NotFoundException("Book not found"));
     }
 
     @Override
-    public List<Books> getAllAvailableBooks() {
+    public List<Book> getAllAvailableBooks() {
         return bookRepository.findByStatus(BookStatus.AVAILABLE);
     }
 
     @Override
-    public ApiResponse<Books>updateBook(UUID bookId, BookDTO bookDTO) {
-        Books book = bookRepository.findFirstByUuid(bookId)
+    public ApiResponse<Book>updateBook(UUID bookId, BookDTO bookDTO) {
+        Book book = bookRepository.findFirstByUuid(bookId)
                 .orElseThrow(() -> new NotFoundException("Book not found"));
 
         book.setTitle(bookDTO.getTitle());
@@ -55,14 +53,14 @@ public class BookServiceImpl implements BookService {
         book.setQuantity(bookDTO.getQuantity());
         book.setCategory(bookDTO.getCategory());
         book.setAvailable(bookDTO.isAvailable());
-        Books updatedBook = bookRepository.save(book);
+        Book updatedBook = bookRepository.save(book);
 
         return new ApiResponse<>(true, "Book updated successfully", updatedBook);
     }
 
     @Override
     public ApiResponse deleteBook(UUID bookId) {
-        Books book = bookRepository.findFirstByUuid(bookId)
+        Book book = bookRepository.findFirstByUuid(bookId)
                 .orElseThrow(() -> new NotFoundException("Book not found"));
 
         bookRepository.delete(book);
@@ -70,8 +68,8 @@ public class BookServiceImpl implements BookService {
         return new ApiResponse(true, "Book deleted successfully");
     }
 
-    private Books convertToEntity(BookDTO bookDTO) {
-        Books book = new Books();
+    private Book convertToEntity(BookDTO bookDTO) {
+        Book book = new Book();
         book.setTitle(bookDTO.getTitle());
         book.setAuthor(bookDTO.getAuthor());
         book.setDescription(bookDTO.getDescription());

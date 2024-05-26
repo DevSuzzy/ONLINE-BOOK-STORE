@@ -24,8 +24,7 @@ public class BookDTO {
     private int quantity;
     private String category;
     private boolean available;
-    private BookStatus status;
 
 
-    }
+}
 
