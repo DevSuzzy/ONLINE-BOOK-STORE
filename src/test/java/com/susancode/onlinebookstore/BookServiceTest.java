@@ -107,7 +107,6 @@ public class BookServiceTest {
         @Test
         @DisplayName("Update existing book successfully")
         void updateExistingBookSuccessfully() {
-            // Arrange
             UUID bookId = UUID.randomUUID();
             BookDTO updatedBookDTO = new BookDTO();
             updatedBookDTO.setTitle("Updated Book Title");

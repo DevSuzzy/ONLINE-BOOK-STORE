@@ -7,6 +7,7 @@ import com.susancode.onlinebookstore.model.Books;
 import com.susancode.onlinebookstore.service.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class BooksController {
     private final BookService bookService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ApiResponse addBook(@RequestBody @Valid BookDTO bookDTO) {
         return bookService.addBook(bookDTO);
     }
