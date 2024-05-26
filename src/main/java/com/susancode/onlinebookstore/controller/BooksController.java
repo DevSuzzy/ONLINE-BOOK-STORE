@@ -1,6 +1,7 @@
 package com.susancode.onlinebookstore.controller;
 
 import com.susancode.onlinebookstore.dto.request.BookDTO;
+import com.susancode.onlinebookstore.dto.response.ApiResponse;
 import com.susancode.onlinebookstore.dto.response.BasicResponse;
 import com.susancode.onlinebookstore.model.Books;
 import com.susancode.onlinebookstore.service.BookService;
@@ -18,7 +19,7 @@ public class BooksController {
     private final BookService bookService;
 
     @PostMapping
-    public BasicResponse addBook(@RequestBody @Valid BookDTO bookDTO) {
+    public ApiResponse addBook(@RequestBody @Valid BookDTO bookDTO) {
         return bookService.addBook(bookDTO);
     }
 
@@ -33,12 +34,12 @@ public class BooksController {
     }
 
     @PutMapping("/{uuid}")
-    public BasicResponse updateBook(@PathVariable("uuid") UUID bookId, @RequestBody @Valid BookDTO bookDTO) {
+    public ApiResponse  updateBook(@PathVariable("uuid") UUID bookId, @RequestBody @Valid BookDTO bookDTO) {
         return bookService.updateBook(bookId, bookDTO);
     }
 
     @DeleteMapping("/{uuid}")
-    public BasicResponse deleteBook(@PathVariable("uuid") UUID bookId) {
+    public ApiResponse  deleteBook(@PathVariable("uuid") UUID bookId) {
         return  bookService.deleteBook(bookId);
 
     }

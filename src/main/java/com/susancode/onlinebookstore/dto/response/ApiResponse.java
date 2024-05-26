@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)

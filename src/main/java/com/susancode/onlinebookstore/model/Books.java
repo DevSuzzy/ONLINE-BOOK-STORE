@@ -2,7 +2,6 @@ package com.susancode.onlinebookstore.model;
 
 import com.susancode.onlinebookstore.enums.BookStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +20,7 @@ public class Books extends AbstractAuditingEntity<Books> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private UUID uuid;
-    @NotBlank(message = "Title is required")
     private String title;
-    @NotBlank(message = "Author is required")
     private String author;
     private String description;
     private double price;

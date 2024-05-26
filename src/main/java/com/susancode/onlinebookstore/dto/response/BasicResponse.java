@@ -7,6 +7,6 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class BasicResponse {
+public class BasicResponse extends ApiResponse {
     private String message;
 }
