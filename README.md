@@ -66,6 +66,7 @@ The technology stack utilized in this project includes:
     ```sh
     ./gradlew build
     ```
+    
    **Run the application:**
     ```sh
     ./gradlew bootRun
