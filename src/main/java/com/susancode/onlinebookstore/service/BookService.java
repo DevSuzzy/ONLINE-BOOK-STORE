@@ -7,6 +7,11 @@ import com.susancode.onlinebookstore.model.Book;
 
 import java.util.List;
 import java.util.UUID;
+/**
+ * Service interface for handling book-related operations.
+ * it defines methods for adding, retrieving, updating, and deleting books.
+ */
+
 
 public interface BookService {
     ApiResponse addBook(BookDTO bookDTO);

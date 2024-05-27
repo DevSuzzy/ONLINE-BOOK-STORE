@@ -26,6 +26,15 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+/**
+ * This class contains unit tests for the BookService implementation.
+ * It tests various scenarios such as adding a book successfully,
+ * adding a book with an existing title, getting a book by UUID,
+ * getting all available books, updating an existing book successfully,
+ * updating a non-existing book (expected to throw NotFoundException),
+ * and deleting a book successfully.
+ * it uses Mockito for mocking dependencies and JUnit5 for test assertions.
+ */
 
 @MockitoSettings(strictness = Strictness.LENIENT)
 @ActiveProfiles("test")

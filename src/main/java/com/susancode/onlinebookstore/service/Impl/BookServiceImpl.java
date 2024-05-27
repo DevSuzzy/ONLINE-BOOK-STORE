@@ -14,6 +14,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ *This is an implementation class for BookService interface.
+ *it provides methods for adding, retrieving, updating, and deleting books.
+ */
+
+
 @Service
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {

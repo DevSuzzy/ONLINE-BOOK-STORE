@@ -19,6 +19,13 @@ import java.security.Key;
 import java.util.Date;
 import java.util.stream.Collectors;
 
+/**
+ * This is a Token provider component for generating and validating JWT tokens.
+ * It initializes the key used for token signing up during bean initialization.
+ * It also provides methods for validating tokens, extracting username from token, and creating tokens.
+ */
+
+
 @Slf4j
 @Component
 @RequiredArgsConstructor

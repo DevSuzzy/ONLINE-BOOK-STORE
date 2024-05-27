@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.io.Serializable;
+/**
+ * This a Data Transfer Object (DTO) class for representing API responses.
+ * it contains fields for request success status, response message, and optional response body.
+ */
 
 
 @NoArgsConstructor

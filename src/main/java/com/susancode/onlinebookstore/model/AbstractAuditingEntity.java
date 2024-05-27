@@ -14,6 +14,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * This is an Abstract class that represents an auditing entity with common auditing fields like createdBy, createdDate, updatedBy, and updatedDate.
+ * it is annotated with JPA annotations for entity mapping and enables auditing using Spring Data's auditing capabilities.
+ * it includes getters and setters for the auditing fields.
+ * it implements Serializable for object serialization.
+ */
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)

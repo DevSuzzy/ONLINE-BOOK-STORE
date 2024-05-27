@@ -15,6 +15,13 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.Optional;
+/**
+ * This is a Global controller advice for handling exceptions and providing consistent error responses.
+ * it defines exception handlers for various types of exceptions,
+ * including not found, bad request, unauthorized, and general exceptions.
+ * it also implements method argument validation handler for handling validation errors in request payloads.
+ */
+
 
 @RestControllerAdvice
 @Slf4j

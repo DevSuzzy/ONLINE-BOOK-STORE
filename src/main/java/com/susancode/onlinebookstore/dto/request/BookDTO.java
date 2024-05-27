@@ -6,6 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+/**
+ * This a Data Transfer Object (DTO) class for representing book request data.
+ * it contains fields for book attributes such as title, author, description, price,
+ * quantity, category, and availability.
+ */
+
 
 
 @Setter

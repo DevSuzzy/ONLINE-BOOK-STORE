@@ -13,6 +13,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
+
+/**
+ * This an Implementation class for AuthService interface.
+ * it handles user authentication logic, such as generating JWT tokens upon successful login.
+ */
+
+
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {

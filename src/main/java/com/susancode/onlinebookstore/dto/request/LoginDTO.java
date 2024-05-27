@@ -1,6 +1,10 @@
 package com.susancode.onlinebookstore.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
+/**
+ * Data Transfer Object (DTO) class for representing login request data.
+ * Contains fields for username and password.
+ */
 
 public class LoginDTO {
 

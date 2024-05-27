@@ -17,6 +17,13 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
+/**
+ * This is a Configuration class for basic authentication security.
+ * it Configures authentication manager, password encoder, and security filter chain.
+ * it Defines in-memory user details service, password encoder, and authentication rules.
+ */
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor

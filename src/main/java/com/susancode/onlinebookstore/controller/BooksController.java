@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * This is a Controller class for handling book-related endpoints.
+ * it defines endpoints for adding, retrieving, updating, and deleting books.
+ */
+
+
 @RestController
 @RequestMapping("/api/v1/books")
 @RequiredArgsConstructor

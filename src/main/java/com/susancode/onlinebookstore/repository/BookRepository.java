@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ *This is a Repository interface for managing Book entities in the database.
+ *it extends JpaRepository for basic CRUD operations.
+ */
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {

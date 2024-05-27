@@ -9,6 +9,13 @@ import lombok.Setter;
 
 import java.util.UUID;
 
+/**
+ * This is an Entity class representing a book in the database.
+ * it Contains fields for book attributes such as ID, UUID, title, author,
+ * description, price, quantity, category, availability, and status.
+ * it is annotated with JPA annotations for entity mapping.
+ */
+
 @Setter
 @Getter
 @NoArgsConstructor
