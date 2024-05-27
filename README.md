@@ -25,6 +25,7 @@ Authentication is implemented using JSON Web Tokens (JWT)
 with Spring Security to secure access to the API endpoints.
 
     Features
+* Login to the application
 * View a list of available books 
 * Add new books to the store 
 * Update book details *Delete books from the store 
@@ -33,6 +34,7 @@ with Spring Security to secure access to the API endpoints.
 
      
     Technology Stack:
+
 The technology stack utilized in this project includes: 
 * Java with Spring Boot framework for API development 
 * Relational database (PostgresSQL) for data storage 
@@ -47,11 +49,21 @@ Run The App To run the Online Bookstore API, follow these steps:
 Navigate to the project directory:
 cd <project_directory>
 
-Build the project:
-./gradlew build
+      Build the project:
+       ./gradlew build
 
     Run the application:
     ./gradlew bootRun
+
+    Default Login Details
+Use the following inbuilt login credentials to obtain a JWT token:
+Username: user
+Password: password
+To authenticate, send a POST request to the /login endpoint 
+with the above credentials. You will receive a JWT token in the response,
+which should be included in the Authorization header of subsequent requests.
+
+
 
     Authentication: 
 Authentication is implemented using JSON Web Tokens (JWT) 
