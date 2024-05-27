@@ -10,7 +10,8 @@ for authentication and provides robust and scalable performance through
 the use of the Spring Boot framework.
 Whether you're building a new bookstore application or integrating with an existing one,
 the Online Bookstore API offers the features and reliability you need.
- --------------   
+ ---- 
+
 ## Table of Contents
 
 # Overview
@@ -34,7 +35,7 @@ The API is built using Java with the Spring Boot framework,
 providing a robust and scalable solution for bookstore management. 
 Authentication is implemented using JSON Web Tokens (JWT) 
 with Spring Security to secure access to the API endpoints.
-
+--------------
 ### Features
 * Login to the application
 * View a list of available books 
@@ -51,7 +52,7 @@ The technology stack utilized in this project includes:
 * JPA for database interactions *JSON Web Tokens (JWT) for authentication 
 * Spring Security for access control
 
-------------------------
+--------------
   **Clone the repository:**
     ```sh
     git clone <repository_url>
@@ -70,7 +71,7 @@ The technology stack utilized in this project includes:
     ```sh
     ./gradlew bootRun
     ```
------------------
+------
    ### Default Login Details
 Use the following inbuilt login credentials to obtain a JWT token:
 - **Username: user**
@@ -79,14 +80,14 @@ Use the following inbuilt login credentials to obtain a JWT token:
 To authenticate, send a POST request to the /login endpoint 
 with the above credentials. You will receive a JWT token in the response,
 which should be included in the Authorization header of subsequent requests.
-
----------------
+-------
   ## Authentication: 
 Authentication is implemented using JSON Web Tokens (JWT) 
 with Spring Security to secure access to the API endpoints. 
 Upon successful authentication, users receive 
 a JWT token that must be included in subsequent requests 
 to access protected resources.
+
 ----------------
   ## Unit Tests: 
 Unit tests have been written to ensure the correctness 
