@@ -2,7 +2,7 @@
 
 Welcome to the Online Bookstore API, 
 a comprehensive backend solution designed for managing an online bookstore. 
-This API allows you to seamlessly handle various bookstore operations such as 
+This API allows you to handle various bookstore operations such as seamlessly 
 viewing available books, adding new books, updating book details, 
 deleting books from inventory, and searching for books by UUID. 
 The API ensures secure access to endpoints using JSON Web Tokens (JWT) 
@@ -47,7 +47,7 @@ with Spring Security to secure access to the API endpoints.
 
 The technology stack utilized in this project includes: 
 * Java with Spring Boot framework for API development 
-* Relational database (PostgresSQL) for data storage 
+* Relational database (PostgreSQL) for data storage 
 * JPA for database interactions *JSON Web Tokens (JWT) for authentication 
 * Spring Security for access control
 
