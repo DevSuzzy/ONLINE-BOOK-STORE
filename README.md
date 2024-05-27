@@ -11,8 +11,9 @@
 * Docs
 * License
 
-   
+
     Overview 
+
 the Online Bookstore API is a backend solution 
  designed to facilitate the management of an online bookstore.
 It allows users to view available books, 
@@ -32,7 +33,6 @@ with Spring Security to secure access to the API endpoints.
 
      
     Technology Stack:
-
 The technology stack utilized in this project includes: 
 * Java with Spring Boot framework for API development 
 * Relational database (PostgresSQL) for data storage 
@@ -66,7 +66,6 @@ and reliability of the Online Bookstore API.
 These tests cover critical components of the application,
 including API endpoints, service layer logic, and data access operations. 
 To run the unit tests, execute the following command:
-
     ./gradlew test
 
 
