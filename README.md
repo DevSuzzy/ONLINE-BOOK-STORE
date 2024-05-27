@@ -4,13 +4,21 @@ Table of Contents
 
 *Online Bookstore API
    *Table of Contents
+   
    *Overview
+   
    *Features
+   
    *Technology Stack
+   
    *Run The App
+   
    *Authentication
+   
    *Unit Tests
+   
    *Docs
+   
    *License
  
 Overview
