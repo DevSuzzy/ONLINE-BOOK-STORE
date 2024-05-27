@@ -1,15 +1,15 @@
-   ONLINE BOOKSTORE API
+   ONLINE BOOK-STORE API
     
-    Table of Contents
-* Online Bookstore API 
-* Overview
-* Features
-* Technology Stack
-* Run The App
-* Authentication
-* Unit Tests
-* Docs
-* License
+## Table of Contents
+
+# Overview
+# Features
+# Technology Stack
+# Run The App
+# Authentication
+# Unit Tests
+# Docs
+# License
 
 
     Overview 
@@ -55,29 +55,30 @@ cd <project_directory>
     Run the application:
     ./gradlew bootRun
 
-    Default Login Details
+   ### Default Login Details
 Use the following inbuilt login credentials to obtain a JWT token:
-Username: user
-Password: password
+- **Username: user**
+- **Password: password**
+
 To authenticate, send a POST request to the /login endpoint 
 with the above credentials. You will receive a JWT token in the response,
 which should be included in the Authorization header of subsequent requests.
 
 
-
-    Authentication: 
+  ## Authentication: 
 Authentication is implemented using JSON Web Tokens (JWT) 
 with Spring Security to secure access to the API endpoints. 
 Upon successful authentication, users receive 
 a JWT token that must be included in subsequent requests 
 to access protected resources.
 
-    Unit Tests: 
+  ## Unit Tests: 
 Unit tests have been written to ensure the correctness 
 and reliability of the Online Bookstore API. 
 These tests cover critical components of the application,
 including API endpoints, service layer logic, and data access operations. 
 To run the unit tests, execute the following command:
+    
     ./gradlew test
 
 
