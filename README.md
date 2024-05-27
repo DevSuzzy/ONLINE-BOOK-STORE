@@ -1,4 +1,4 @@
-## ONLINE BOOK-STORE API
+### ONLINE BOOK-STORE API
     
 ## Table of Contents
 
@@ -12,7 +12,7 @@
 # License
 
 
-##  Overview 
+###  Overview 
 
 the Online Bookstore API is a backend solution 
  designed to facilitate the management of an online bookstore.
@@ -83,11 +83,10 @@ and reliability of the Online Bookstore API.
 These tests cover critical components of the application,
 including API endpoints, service layer logic, and data access operations. 
 To run the unit tests, execute the following command:
-    
-    ./gradlew test
+```sh
+./gradlew test
 
-
-### Docs API Documentation: 
+## Docs API Documentation: 
 * GET /books/ - Retrieve a list of available books. 
 * POST /books/- Add a new book to the store. 
 * PUT /books/{id} - Update book details. 
