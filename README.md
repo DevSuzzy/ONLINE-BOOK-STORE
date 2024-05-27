@@ -26,12 +26,12 @@ the Online Bookstore API offers the features and reliability you need.
 ###  Overview 
 
 the Online Bookstore API is a backend solution 
- designed to facilitate the management of an online bookstore.
+it is designed to facilitate the management of an online bookstore.
 It allows users to view available books, 
 add new books to the store, update book details,
 delete books from the inventory, and search for books by UUID. 
 The API is built using Java with the Spring Boot framework, 
-providing a robust and scalable solution for bookstore management. 
+it provides a robust and scalable solution for bookstore management. 
 Authentication is implemented using JSON Web Tokens (JWT) 
 with Spring Security to secure access to the API endpoints.
 
@@ -65,18 +65,18 @@ The technology stack utilized in this project includes:
 
    **Build the project:**
     ```sh
-    ./gradlew build
+   mvn clean install
     ```
     
    **Run the application:**
     ```sh
-    ./gradlew bootRun
+   mvn spring-boot:run
     ```
 
    ### Default Login Details
 Use the following inbuilt login credentials to obtain a JWT token:
 - **Username: user**
-- **Password: password**
+- **Password: password1**
 
 To authenticate, send a POST request to the /login endpoint 
 with the above credentials. You will receive a JWT token in the response,
@@ -91,13 +91,14 @@ to access protected resources.
 
 ----------------
   ## Unit Tests: 
-Unit tests have been written to ensure the correctness 
-and reliability of the Online Bookstore API. 
+I wrote unit tests to ensure the correctness 
+and the reliability of the Online Bookstore API. 
 These tests cover critical components of the application,
-including API endpoints, service layer logic, and data access operations. 
+which includes the API endpoints, service layer logic, and data access operations. 
 To run the unit tests, execute the following command:
 ```sh
-./gradlew test
+ mvn test
+
 ```
 -------------
 ## Docs API Documentation: 
