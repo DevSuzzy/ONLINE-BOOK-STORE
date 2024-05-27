@@ -95,14 +95,15 @@ These tests cover critical components of the application,
 including API endpoints, service layer logic, and data access operations. 
 To run the unit tests, execute the following command:
 ```sh
-./gradlew test
-
+./gradlew test 
+----------------
+```
 ## Docs API Documentation: 
 * GET /books/ - Retrieve a list of available books. 
 * POST /books/- Add a new book to the store. 
 * PUT /books/{id} - Update book details. 
 * DELETE /books/{id} - Delete a book from the store. 
 * GET /books/{uuid} - Find a book by UUID.
-
+---------------
 License The Online Bookstore API is open-source and released under the MIT License. 
 Feel free to modify and use the code per the license terms.
