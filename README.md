@@ -1,4 +1,15 @@
 ### ONLINE BOOK-STORE API
+
+Welcome to the Online Bookstore API, 
+a comprehensive backend solution designed for managing an online bookstore. 
+This API allows you to seamlessly handle various bookstore operations such as 
+viewing available books, adding new books, updating book details, 
+deleting books from inventory, and searching for books by UUID. 
+The API ensures secure access to endpoints using JSON Web Tokens (JWT) 
+for authentication and provides robust and scalable performance through 
+the use of the Spring Boot framework.
+Whether you're building a new bookstore application or integrating with an existing one,
+the Online Bookstore API offers the features and reliability you need.
     
 ## Table of Contents
 
