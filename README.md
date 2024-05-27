@@ -34,7 +34,7 @@ The API is built using Java with the Spring Boot framework,
 providing a robust and scalable solution for bookstore management. 
 Authentication is implemented using JSON Web Tokens (JWT) 
 with Spring Security to secure access to the API endpoints.
---------------
+
 ### Features
 * Login to the application
 * View a list of available books 
@@ -70,7 +70,7 @@ The technology stack utilized in this project includes:
     ```sh
     ./gradlew bootRun
     ```
-------
+
    ### Default Login Details
 Use the following inbuilt login credentials to obtain a JWT token:
 - **Username: user**
