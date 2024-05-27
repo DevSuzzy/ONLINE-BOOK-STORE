@@ -36,7 +36,7 @@ Authentication is implemented using JSON Web Tokens (JWT)
 with Spring Security to secure access to the API endpoints.
 
 ### Features
-* Login to the application
+* Login 
 * View a list of available books 
 * Add new books to the store 
 * Update book details *Delete books from the store 
@@ -47,8 +47,9 @@ with Spring Security to secure access to the API endpoints.
 
 The technology stack utilized in this project includes: 
 * Java with Spring Boot framework for API development 
-* Relational database (PostgreSQL) for data storage 
-* JPA for database interactions *JSON Web Tokens (JWT) for authentication 
+* Relational database (PostgresSQL) for data storage 
+* JPA for database interactions 
+* JSON Web Tokens (JWT) for authentication 
 * Spring Security for access control
 
 --------------
