@@ -1,30 +1,20 @@
-    Online Book-Store API
-
+   ONLINE BOOKSTORE API
     Table of Contents
 
-* Online Bookstore API *Table of Contents
-
+* Online Bookstore API 
 * Overview
-
 * Features
-
 * Technology Stack
-
 * Run The App
-
 * Authentication
-
 * Unit Tests
-
 * Docs
-
 * License
 
    
-     Overview
- the Online Bookstore API is a backend solution 
-  designed to facilitate the management of an online bookstore.
-
+    Overview 
+the Online Bookstore API is a backend solution 
+ designed to facilitate the management of an online bookstore.
 It allows users to view available books, 
 add new books to the store, update book details,
 delete books from the inventory, and search for books by UUID. 
@@ -52,7 +42,7 @@ The technology stack utilized in this project includes:
 Run The App To run the Online Bookstore API, follow these steps:
 
     Clone the repository:
-git clone <repository_url>
+    git clone <repository_url>
 
 Navigate to the project directory:
 cd <project_directory>
@@ -60,8 +50,8 @@ cd <project_directory>
 Build the project:
 ./gradlew build
 
-    Run the application: 
-./gradlew bootRun
+    Run the application:
+    ./gradlew bootRun
 
     Authentication: 
 Authentication is implemented using JSON Web Tokens (JWT) 
@@ -77,11 +67,11 @@ These tests cover critical components of the application,
 including API endpoints, service layer logic, and data access operations. 
 To run the unit tests, execute the following command:
 
-./gradlew test
+    ./gradlew test
 
     Docs API Documentation: 
-* GET /books - Retrieve a list of available books. 
-* POST /books - Add a new book to the store. 
+* GET /books/ - Retrieve a list of available books. 
+* POST /books/- Add a new book to the store. 
 * PUT /books/{id} - Update book details. 
 * DELETE /books/{id} - Delete a book from the store. 
 * GET /books/{uuid} - Find a book by UUID.
