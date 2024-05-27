@@ -1,6 +1,6 @@
    ONLINE BOOKSTORE API
+    
     Table of Contents
-
 * Online Bookstore API 
 * Overview
 * Features
@@ -68,6 +68,7 @@ including API endpoints, service layer logic, and data access operations.
 To run the unit tests, execute the following command:
 
     ./gradlew test
+
 
     Docs API Documentation: 
 * GET /books/ - Retrieve a list of available books. 
