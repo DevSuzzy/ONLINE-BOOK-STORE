@@ -95,9 +95,9 @@ These tests cover critical components of the application,
 including API endpoints, service layer logic, and data access operations. 
 To run the unit tests, execute the following command:
 ```sh
-./gradlew test 
-----------------
+./gradlew test
 ```
+-------------
 ## Docs API Documentation: 
 * GET /books/ - Retrieve a list of available books. 
 * POST /books/- Add a new book to the store. 
