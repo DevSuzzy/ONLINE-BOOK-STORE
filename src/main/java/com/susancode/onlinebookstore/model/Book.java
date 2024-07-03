@@ -7,14 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
 import java.util.UUID;
 
-/**
- * This is an Entity class representing a book in the database.
- * it Contains fields for book attributes such as ID, UUID, title, author,
- * description, price, quantity, category, availability, and status.
- * it is annotated with JPA annotations for entity mapping.
- */
 
 @Setter
 @Getter
@@ -35,6 +30,21 @@ public class Book extends AbstractAuditingEntity<Book> {
     private String category;
     private boolean available = true;
     private BookStatus status = BookStatus.AVAILABLE;
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private Set<Author> authors;
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_genre",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private Set<Genre> genres;
+
 
 
 }
