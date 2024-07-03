@@ -105,10 +105,10 @@ To run the unit tests, execute the following command:
 * GET /books/ - Retrieve a list of available books. 
 * POST /books/- Add a new book to the store. 
 * PUT /books/{id} - Update book details. 
-* DELETE /books/{id} - Delete a book from the store. 
+* DELETE /books/{id} - Delete a book from the store.
+GET /books/{uuid} - Find a book by UUID
 
-.............
-* GET /books/{uuid} - Find a book by UUID
+...........
 * GET /authors/ - Retrieve a list of available authors.
 * POST /authors/ - Add a new author to the store.
 * PUT /authors/{id} - Update author details.
