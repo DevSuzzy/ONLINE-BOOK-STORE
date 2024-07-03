@@ -64,6 +64,7 @@ public class AuthorServiceImpl implements AuthorService {
         author.setName(authorDTO.getName());
         author.setBiography(authorDTO.getBiography());
         author.setNationality(authorDTO.getNationality());
+        author.setUuid(UUID.randomUUID());
         return author;
     }
 }
